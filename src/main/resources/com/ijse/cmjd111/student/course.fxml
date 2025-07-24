@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.cmjd111.student.controller.CourseController">
+    <children>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <HBox spacing="10">
+                <Label text="Course Name:"/>
+                <TextField fx:id="courseNameField" prefWidth="200"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label text="Description:"/>
+                <TextField fx:id="descriptionField" prefWidth="300"/>
+            </HBox>
+            <HBox spacing="10">
+                <Button text="Add" onAction="#addCourse"/>
+                <Button text="Update" onAction="#updateCourse"/>
+                <Button text="Delete" onAction="#deleteCourse"/>
+                <Button text="Clear" onAction="#clearFields"/>
+            </HBox>
+            <TableView fx:id="courseTable" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="courseNameCol" text="Course Name" prefWidth="200"/>
+                    <TableColumn fx:id="descriptionCol" text="Description" prefWidth="300"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>
+
+

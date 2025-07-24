@@ -3,6 +3,7 @@ package com.ijse.cmjd111.student.controller;
 import com.ijse.cmjd111.student.dto.StudentDTO;
 import com.ijse.cmjd111.student.model.Student;
 import com.ijse.cmjd111.student.service.StudentService;
+import com.ijse.cmjd111.student.service.StudentServiceImpl;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -25,7 +26,7 @@ public class StudentController {
     @FXML private TableColumn<StudentDTO, String> courseCol;
     @FXML private TableColumn<StudentDTO, String> contactCol;
 
-    private final StudentService service = new StudentService();
+    private final StudentService service = new StudentServiceImpl();
 
     @FXML
     public void initialize() {
