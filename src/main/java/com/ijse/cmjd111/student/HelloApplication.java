@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("student.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 250);
         stage.setTitle("SAMS - Login");
         stage.setScene(scene);
@@ -18,5 +18,12 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public void startstudent(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("student.fxml"));
+        primaryStage.setTitle("Student Management");
+        primaryStage.setScene(new Scene(root, 700, 500));
+        primaryStage.show();
     }
 }
