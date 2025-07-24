@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.ijse.cmjd111.student.controller.ClassScheduleController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10">
+        <Label text="Subject:"/>
+        <TextField fx:id="subjectField" prefWidth="150"/>
+        <Label text="Course ID:"/>
+        <TextField fx:id="courseIdField" prefWidth="70"/>
+        <Label text="Lecturer ID:"/>
+        <TextField fx:id="lecturerIdField" prefWidth="70"/>
+        <Label text="Date:"/>
+        <DatePicker fx:id="datePicker"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <Button text="Add" onAction="#addSchedule"/>
+        <Button text="Update" onAction="#updateSchedule"/>
+        <Button text="Delete" onAction="#deleteSchedule"/>
+        <Button text="Clear" onAction="#clearFields"/>
+    </HBox>
+
+    <TableView fx:id="scheduleTable" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="subjectCol" text="Subject" prefWidth="150"/>
+            <TableColumn fx:id="courseIdCol" text="Course ID" prefWidth="80"/>
+            <TableColumn fx:id="lecturerIdCol" text="Lecturer ID" prefWidth="80"/>
+            <TableColumn fx:id="dateCol" text="Date" prefWidth="100"/>
+        </columns>
+    </TableView>
+</VBox>
+
+
+
