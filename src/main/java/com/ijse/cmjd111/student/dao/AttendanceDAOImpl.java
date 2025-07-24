@@ -6,7 +6,9 @@ import com.ijse.cmjd111.student.util.DBConnection;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AttendanceDAOImpl implements AttendanceDAO {
 
@@ -96,5 +98,26 @@ public class AttendanceDAOImpl implements AttendanceDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Map<String, Integer> getAttendanceSummaryBySchedule(int scheduleId) {
+        Map<String, Integer> summary = new HashMap<>();
+        String sql = "SELECT status, COUNT(*) AS count FROM attendance WHERE schedule_id = ? GROUP BY status";
+
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, scheduleId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                summary.put(rs.getString("status"), rs.getInt("count"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return summary;
     }
 }

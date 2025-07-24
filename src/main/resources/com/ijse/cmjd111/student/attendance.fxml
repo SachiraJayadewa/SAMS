@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 
 <AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.ijse.cmjd111.student.controller.AttendanceController">
-    <VBox spacing="10">
+    <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
         <padding>
             <Insets top="20" right="20" bottom="20" left="20"/>
         </padding>
@@ -30,14 +30,32 @@
 
         <Label text="Attendance Records" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
 
-        <TableView fx:id="attendanceTable" prefHeight="200">
+        <TableView fx:id="attendanceTable" prefHeight="300">
             <columns>
-                <TableColumn fx:id="idCol" text="ID" />
-                <TableColumn fx:id="studentIdCol" text="Student ID" />
-                <TableColumn fx:id="scheduleIdCol" text="Schedule ID" />
-                <TableColumn fx:id="statusCol" text="Status" />
-                <TableColumn fx:id="dateCol" text="Date" />
+                <TableColumn fx:id="idCol" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="studentIdCol" text="Student ID" prefWidth="100"/>
+                <TableColumn fx:id="scheduleIdCol" text="Schedule ID" prefWidth="100"/>
+                <TableColumn fx:id="statusCol" text="Status" prefWidth="100"/>
+                <TableColumn fx:id="dateCol" text="Date" prefWidth="120"/>
             </columns>
         </TableView>
+
+        <!-- Attendance Report Section -->
+        <Separator />
+        <Label text="Attendance Report" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+        <GridPane hgap="10" vgap="10">
+            <Label text="Schedule ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="reportScheduleIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Button text="Show Report" onAction="#showAttendanceReport" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        </GridPane>
+
+        <HBox spacing="20">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label fx:id="presentCountLabel" text="Present: 0"/>
+            <Label fx:id="absentCountLabel" text="Absent: 0"/>
+        </HBox>
     </VBox>
 </AnchorPane>

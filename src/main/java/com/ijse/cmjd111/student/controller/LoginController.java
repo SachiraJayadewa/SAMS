@@ -38,8 +38,9 @@ public class LoginController {
                         fxmlFile = "/com/ijse/cmjd111/student/admin.fxml";
                         break;
                     case "Lecturer":
-                        fxmlFile = "/com/ijse/cmjd111/student/lecturer.fxml";
+                        fxmlFile = "/com/ijse/cmjd111/student/lecturerDashboard.fxml"; // load dashboard first
                         break;
+
                     case "Student":
                         fxmlFile = "/com/ijse/cmjd111/student/student.fxml";
                         break;

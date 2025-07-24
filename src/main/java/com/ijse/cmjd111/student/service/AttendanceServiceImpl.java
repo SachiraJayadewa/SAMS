@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class AttendanceServiceImpl implements AttendanceService {
 
@@ -47,8 +48,12 @@ public class AttendanceServiceImpl implements AttendanceService {
         attendanceDAO.deleteAttendance(attendanceId);
     }
 
-    // ---------- Helper Methods ----------
+    @Override
+    public Map<String, Integer> getAttendanceSummaryBySchedule(int scheduleId) {
+        return attendanceDAO.getAttendanceSummaryBySchedule(scheduleId);
+    }
 
+    // Helper methods to validate foreign keys
     private boolean isStudentExists(int studentId) {
         String sql = "SELECT student_id FROM student WHERE student_id = ?";
         try (Connection conn = DBConnection.getConnection();

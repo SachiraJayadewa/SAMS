@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class AttendanceController {
 
@@ -25,6 +26,10 @@ public class AttendanceController {
     @FXML private TableColumn<Attendance, String> statusCol;
     @FXML private TableColumn<Attendance, LocalDate> dateCol;
 
+    @FXML private TextField reportScheduleIdField;
+    @FXML private Label presentCountLabel;
+    @FXML private Label absentCountLabel;
+
     private final AttendanceService attendanceService = new AttendanceServiceImpl();
 
     @FXML
@@ -36,7 +41,7 @@ public class AttendanceController {
         studentIdCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleIntegerProperty(cellData.getValue().getStudentId()).asObject());
         scheduleIdCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleIntegerProperty(cellData.getValue().getScheduleId()).asObject());
         statusCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleStringProperty(cellData.getValue().getStatus()));
-        dateCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue().getMarkedDate()));  // Fixed getter
+        dateCol.setCellValueFactory(cellData -> new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue().getMarkedDate()));
 
         loadAttendanceData();
     }
@@ -62,13 +67,13 @@ public class AttendanceController {
         } catch (NumberFormatException e) {
             showAlert("Student ID and Schedule ID must be numbers.");
         } catch (IllegalArgumentException e) {
-            showAlert(e.getMessage());  // Show validation errors like "Student ID does not exist"
+            showAlert(e.getMessage());
         }
     }
 
-
     private void loadAttendanceData() {
-        List<Attendance> attendanceList = attendanceService.getAttendanceBySchedule(1); // load for default schedule or all
+        // For demo: load by schedule id 1 (you can enhance to filter dynamically)
+        List<Attendance> attendanceList = attendanceService.getAttendanceBySchedule(1);
         ObservableList<Attendance> observableList = FXCollections.observableArrayList(attendanceList);
         attendanceTable.setItems(observableList);
     }
@@ -86,5 +91,22 @@ public class AttendanceController {
         alert.setTitle("Input Error");
         alert.setContentText(msg);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void showAttendanceReport() {
+        try {
+            int scheduleId = Integer.parseInt(reportScheduleIdField.getText());
+            Map<String, Integer> summary = attendanceService.getAttendanceSummaryBySchedule(scheduleId);
+
+            int presentCount = summary.getOrDefault("Present", 0);
+            int absentCount = summary.getOrDefault("Absent", 0);
+
+            presentCountLabel.setText("Present: " + presentCount);
+            absentCountLabel.setText("Absent: " + absentCount);
+
+        } catch (NumberFormatException e) {
+            showAlert("Schedule ID must be a number.");
+        }
     }
 }

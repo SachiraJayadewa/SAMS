@@ -3,10 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" spacing="20">
-    <Label text="Admin Dashboard" style="-fx-font-size: 24px;"/>
-    <Button text="Manage Courses"/>
-    <Button text="Manage Lecturers"/>
-    <Button text="Manage Students"/>
-</VBox>
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
+      fx:controller="com.ijse.cmjd111.student.controller.AdminController"
+      alignment="CENTER" spacing="20" style="-fx-padding: 20;">
 
+    <Label text="Admin Dashboard" style="-fx-font-size: 24px;" />
+
+    <Button text="Manage Courses" onAction="#handleManageCourses"/>
+    <Button text="Manage Lecturers" onAction="#handleManageLecturers"/>
+    <Button text="Manage Students" onAction="#handleManageStudents"/>
+
+</VBox>

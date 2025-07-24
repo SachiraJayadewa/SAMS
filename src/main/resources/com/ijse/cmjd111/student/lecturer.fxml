@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" spacing="20">
-    <Label text="Lecturer Dashboard" style="-fx-font-size: 24px;"/>
-    <Button text="Take Attendance"/>
-    <Button text="View Students"/>
-</VBox>
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ijse.cmjd111.student.controller.LecturerController">
+
+    <top>
+        <Label text="Lecturer Management" style="-fx-font-size: 24px; -fx-padding: 10;" BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <VBox spacing="10" padding="10">
+            <GridPane hgap="10" vgap="10">
+                <Label text="Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="nameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Department:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="departmentField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Contact:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="contactField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="10">
+                <Button text="Add" onAction="#addLecturer"/>
+                <Button text="Update" onAction="#updateLecturer"/>
+                <Button text="Delete" onAction="#deleteLecturer"/>
+                <Button text="Clear" onAction="#clearFields"/>
+            </HBox>
+
+            <TableView fx:id="lecturerTable" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="nameCol" text="Name" prefWidth="120"/>
+                    <TableColumn fx:id="departmentCol" text="Department" prefWidth="100"/>
+                    <TableColumn fx:id="emailCol" text="Email" prefWidth="160"/>
+                    <TableColumn fx:id="contactCol" text="Contact" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

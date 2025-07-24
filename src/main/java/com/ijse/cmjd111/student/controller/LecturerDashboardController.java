@@ -1,0 +1,33 @@
+package com.ijse.cmjd111.student.controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class LecturerDashboardController {
+
+    private void loadFXML(String fxmlPath, ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Lecturer - " + fxmlPath.substring(fxmlPath.lastIndexOf("/") + 1));
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void handleMarkAttendance(ActionEvent event) {
+        loadFXML("/com/ijse/cmjd111/student/attendance.fxml", event); // your marking FXML
+    }
+
+    public void handleViewAttendance(ActionEvent event) {
+        loadFXML("/com/ijse/cmjd111/student/attendance.fxml", event); // your viewing FXML
+    }
+}

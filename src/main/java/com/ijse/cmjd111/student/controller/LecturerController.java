@@ -15,13 +15,13 @@ import java.util.List;
 public class LecturerController {
 
     @FXML private TextField nameField;
-    @FXML private TextField departmentField;  // Changed from empIdField to departmentField
+    @FXML private TextField departmentField;
     @FXML private TextField emailField;
     @FXML private TextField contactField;
 
     @FXML private TableView<LecturerDTO> lecturerTable;
     @FXML private TableColumn<LecturerDTO, String> nameCol;
-    @FXML private TableColumn<LecturerDTO, String> departmentCol;  // Changed from empIdCol
+    @FXML private TableColumn<LecturerDTO, String> departmentCol;
     @FXML private TableColumn<LecturerDTO, String> emailCol;
     @FXML private TableColumn<LecturerDTO, String> contactCol;
 
@@ -30,11 +30,10 @@ public class LecturerController {
     @FXML
     public void initialize() {
         nameCol.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        departmentCol.setCellValueFactory(cellData -> cellData.getValue().departmentProperty()); // changed
+        departmentCol.setCellValueFactory(cellData -> cellData.getValue().departmentProperty());
         emailCol.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
         contactCol.setCellValueFactory(cellData -> cellData.getValue().contactProperty());
 
-        // Auto-fill fields on row select
         lecturerTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) {
                 nameField.setText(newSel.getName());
@@ -67,21 +66,17 @@ public class LecturerController {
 
     @FXML
     private void addLecturer() {
-        String name = nameField.getText();
-        String department = departmentField.getText();
-        String email = emailField.getText();
-        String contact = contactField.getText();
+        String name = nameField.getText().trim();
+        String department = departmentField.getText().trim();
+        String email = emailField.getText().trim();
+        String contact = contactField.getText().trim();
 
         if (name.isEmpty() || department.isEmpty() || email.isEmpty() || contact.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Input Error");
-            alert.setHeaderText("Missing Fields");
-            alert.setContentText("Please fill all fields before adding a lecturer.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.ERROR, "Missing Fields", "Please fill all fields before adding a lecturer.");
             return;
         }
 
-        Lecturer lecturer = new Lecturer(0, name, department, contact, email); // use 0 or default id for new
+        Lecturer lecturer = new Lecturer(0, name, department, contact, email);
         service.addLecturer(lecturer);
         loadLecturers();
         clearFields();
@@ -92,13 +87,15 @@ public class LecturerController {
         LecturerDTO dto = lecturerTable.getSelectionModel().getSelectedItem();
         if (dto != null) {
             Lecturer lecturer = new Lecturer(dto.getLecturerId(),
-                    nameField.getText(),
-                    departmentField.getText(),
-                    contactField.getText(),
-                    emailField.getText());
+                    nameField.getText().trim(),
+                    departmentField.getText().trim(),
+                    contactField.getText().trim(),
+                    emailField.getText().trim());
             service.updateLecturer(lecturer);
             loadLecturers();
             clearFields();
+        } else {
+            showAlert(Alert.AlertType.WARNING, "No Selection", "Please select a lecturer to update.");
         }
     }
 
@@ -109,6 +106,8 @@ public class LecturerController {
             service.deleteLecturer(dto.getLecturerId());
             loadLecturers();
             clearFields();
+        } else {
+            showAlert(Alert.AlertType.WARNING, "No Selection", "Please select a lecturer to delete.");
         }
     }
 
@@ -118,7 +117,14 @@ public class LecturerController {
         departmentField.clear();
         emailField.clear();
         contactField.clear();
+        lecturerTable.getSelectionModel().clearSelection();
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
-
-
