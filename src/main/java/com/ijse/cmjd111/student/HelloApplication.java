@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("classschedule.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("attendance.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 400, 250);
         stage.setTitle("SAMS - Login");
         stage.setScene(scene);

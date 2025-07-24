@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.ijse.cmjd111.student.controller.AttendanceController">
+    <VBox spacing="10">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <Label text="Mark Attendance" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <GridPane hgap="10" vgap="10">
+            <Label text="Student ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="studentIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Schedule ID:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="scheduleIdField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <DatePicker fx:id="datePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+            <Label text="Status:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <ChoiceBox fx:id="statusChoice" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <Button text="Mark Attendance" onAction="#markAttendance" />
+
+        <Label text="Attendance Records" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+        <TableView fx:id="attendanceTable" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="idCol" text="ID" />
+                <TableColumn fx:id="studentIdCol" text="Student ID" />
+                <TableColumn fx:id="scheduleIdCol" text="Schedule ID" />
+                <TableColumn fx:id="statusCol" text="Status" />
+                <TableColumn fx:id="dateCol" text="Date" />
+            </columns>
+        </TableView>
+    </VBox>
+</AnchorPane>
