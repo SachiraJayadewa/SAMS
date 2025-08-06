@@ -3,6 +3,9 @@ SAMS submission report
 GitHub repository link
 https://github.com/SachiraJayadewa/SAMS
 
+
+Some improvements were made after the deadline
+
 MySQL Script
 -- Create Database
 CREATE DATABASE IF NOT EXISTS sams;
@@ -107,6 +110,18 @@ INSERT INTO attendance (student_id, schedule_id, status, marked_date) VALUES
 (6, 1, 'Absent', '2025-07-25'),
 (2, 3, 'Present', '2025-07-27'),
 (6, 5, 'Present', '2025-07-29');
+
+ALTER TABLE user
+    ADD COLUMN student_id INT NULL,
+    ADD COLUMN lecturer_id INT NULL,
+    ADD FOREIGN KEY (student_id) REFERENCES student(student_id),
+    ADD FOREIGN KEY (lecturer_id) REFERENCES lecturer(lecturer_id);
+
+UPDATE user SET student_id = 2 WHERE username = 'nimasha';
+UPDATE user SET student_id = 6 WHERE username = 'student1';
+UPDATE user SET lecturer_id = 2 WHERE username = 'jane.doe';
+UPDATE user SET lecturer_id = 1 WHERE username = 'lecturer1';
+
 
 
 
