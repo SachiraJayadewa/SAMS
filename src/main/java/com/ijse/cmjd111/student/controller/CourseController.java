@@ -3,8 +3,10 @@ package com.ijse.cmjd111.student.controller;
 import com.ijse.cmjd111.student.dto.CourseDTO;
 import com.ijse.cmjd111.student.model.Course;
 import com.ijse.cmjd111.student.service.CourseService;
+import com.ijse.cmjd111.student.util.SceneNavigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -97,6 +99,11 @@ public class CourseController {
     private void clearFields() {
         courseNameField.clear();
         descriptionField.clear();
+    }
+
+    @FXML
+    private void goBackToDashboard(javafx.event.ActionEvent event) {
+        SceneNavigator.switchScene("/com/ijse/cmjd111/student/admin.fxml", event,"Admin Dashboard");
     }
 }
 

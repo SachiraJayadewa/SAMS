@@ -5,31 +5,52 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ijse.cmjd111.student.controller.CourseController">
+<AnchorPane prefHeight="450" prefWidth="650"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/23.0.1"
+            fx:controller="com.ijse.cmjd111.student.controller.CourseController"
+            style="-fx-background-color: #f4f4f4;">
     <children>
-        <VBox spacing="10" style="-fx-padding: 20;">
+        <VBox spacing="15" layoutX="20" layoutY="20" style="-fx-padding: 20;">
+            <Label text="📘 Course Management"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;" />
+
             <HBox spacing="10">
-                <Label text="Course Name:"/>
-                <TextField fx:id="courseNameField" prefWidth="200"/>
+                <Label text="Course Name:" style="-fx-font-size: 14px;"/>
+                <TextField fx:id="courseNameField" prefWidth="250"/>
             </HBox>
+
             <HBox spacing="10">
-                <Label text="Description:"/>
-                <TextField fx:id="descriptionField" prefWidth="300"/>
+                <Label text="Description:" style="-fx-font-size: 14px;"/>
+                <TextField fx:id="descriptionField" prefWidth="350"/>
             </HBox>
-            <HBox spacing="10">
-                <Button text="Add" onAction="#addCourse"/>
-                <Button text="Update" onAction="#updateCourse"/>
-                <Button text="Delete" onAction="#deleteCourse"/>
-                <Button text="Clear" onAction="#clearFields"/>
+
+            <HBox spacing="12">
+                <Button text="Add" onAction="#addCourse"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-pref-width: 80; -fx-font-weight: bold;"/>
+                <Button text="Update" onAction="#updateCourse"
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-pref-width: 80; -fx-font-weight: bold;"/>
+                <Button text="Delete" onAction="#deleteCourse"
+                        style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-pref-width: 80; -fx-font-weight: bold;"/>
+                <Button text="Clear" onAction="#clearFields"
+                        style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-pref-width: 80; -fx-font-weight: bold;"/>
             </HBox>
-            <TableView fx:id="courseTable" prefHeight="300">
+
+            <TableView fx:id="courseTable" prefHeight="300" style="-fx-background-color: white; -fx-border-color: #ccc;">
                 <columns>
                     <TableColumn fx:id="courseNameCol" text="Course Name" prefWidth="200"/>
-                    <TableColumn fx:id="descriptionCol" text="Description" prefWidth="300"/>
+                    <TableColumn fx:id="descriptionCol" text="Description" prefWidth="350"/>
                 </columns>
             </TableView>
+            <!-- NEW Back button -->
+            <Button text="🔙 Back to Dashboard"
+                    onAction="#goBackToDashboard"
+                    style="-fx-background-color: #607D8B; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 13px;"
+                    alignment="CENTER_LEFT"
+                    prefWidth="200"/>
         </VBox>
     </children>
 </AnchorPane>
+
 
 

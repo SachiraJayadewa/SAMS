@@ -2,6 +2,7 @@ package com.ijse.cmjd111.student.controller;
 
 import com.ijse.cmjd111.student.model.User;
 import com.ijse.cmjd111.student.service.UserService;
+import com.ijse.cmjd111.student.util.LoggedInUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -12,10 +13,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class LoginController {
+
     @FXML
     private TextField usernameField;
+
     @FXML
     private PasswordField passwordField;
+
     @FXML
     private Label messageLabel;
 
@@ -29,6 +33,15 @@ public class LoginController {
         User user = userService.validateLogin(username, password);
 
         if (user != null) {
+            // ✅ Store user info globally
+            LoggedInUser.getInstance().setUserSession(
+                    user.getUserId(),
+                    user.getUsername(),
+                    user.getRole(),
+                    user.getStudentId(),
+                    user.getLecturerId()
+            );
+
             messageLabel.setText("Welcome, " + user.getRole());
 
             try {
@@ -38,11 +51,10 @@ public class LoginController {
                         fxmlFile = "/com/ijse/cmjd111/student/admin.fxml";
                         break;
                     case "Lecturer":
-                        fxmlFile = "/com/ijse/cmjd111/student/lecturerDashboard.fxml"; // load dashboard first
+                        fxmlFile = "/com/ijse/cmjd111/student/lecturerDashboard.fxml";
                         break;
-
                     case "Student":
-                        fxmlFile = "/com/ijse/cmjd111/student/student.fxml";
+                        fxmlFile = "/com/ijse/cmjd111/student/studentDashboard.fxml";
                         break;
                     default:
                         messageLabel.setText("Unknown role.");

@@ -1,33 +1,24 @@
 package com.ijse.cmjd111.student.controller;
 
+import com.ijse.cmjd111.student.util.SceneNavigator;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.fxml.FXML;
 
 public class LecturerDashboardController {
 
-    private void loadFXML(String fxmlPath, ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Lecturer - " + fxmlPath.substring(fxmlPath.lastIndexOf("/") + 1));
-            stage.show();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    @FXML
     public void handleMarkAttendance(ActionEvent event) {
-        loadFXML("/com/ijse/cmjd111/student/attendance.fxml", event); // your marking FXML
+        SceneNavigator.switchScene("/com/ijse/cmjd111/student/attendance.fxml", event, "Mark Attendance");
     }
 
+    @FXML
     public void handleViewAttendance(ActionEvent event) {
-        loadFXML("/com/ijse/cmjd111/student/attendance.fxml", event); // your viewing FXML
+        SceneNavigator.switchScene("/com/ijse/cmjd111/student/attendance.fxml", event, "View Attendance");
+    }
+
+    @FXML
+    public void handleLogout(ActionEvent event) {
+        SceneNavigator.switchScene("/com/ijse/cmjd111/student/login.fxml", event, "Login");
     }
 }
+

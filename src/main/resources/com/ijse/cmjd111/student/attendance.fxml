@@ -4,20 +4,21 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.ijse.cmjd111.student.controller.AttendanceController">
-    <VBox spacing="10" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.ijse.cmjd111.student.controller.AttendanceController"
+            style="-fx-background-color: #f9f9f9;">
+    <VBox spacing="15" AnchorPane.topAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.bottomAnchor="10">
         <padding>
             <Insets top="20" right="20" bottom="20" left="20"/>
         </padding>
 
         <Label text="Mark Attendance" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
 
-        <GridPane hgap="10" vgap="10">
+        <GridPane hgap="15" vgap="12">
             <Label text="Student ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="studentIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <TextField fx:id="studentIdField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="180"/>
 
             <Label text="Schedule ID:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="scheduleIdField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <TextField fx:id="scheduleIdField" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="180"/>
 
             <Label text="Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
             <DatePicker fx:id="datePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
@@ -26,11 +27,16 @@
             <ChoiceBox fx:id="statusChoice" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
         </GridPane>
 
-        <Button text="Mark Attendance" onAction="#markAttendance" />
+        <HBox spacing="15" alignment="CENTER_LEFT" style="-fx-padding: 10 0 10 0;">
+            <Button text="⬅ Back" onAction="#handleBackButton"
+                    style="-fx-background-color: #607D8B; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100;"/>
+            <Button text="Mark Attendance" onAction="#markAttendance"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 140;"/>
+        </HBox>
 
-        <Label text="Attendance Records" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+        <Label text="Attendance Records" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 0 5 0;" />
 
-        <TableView fx:id="attendanceTable" prefHeight="300">
+        <TableView fx:id="attendanceTable" prefHeight="300" style="-fx-border-color: #ccc;">
             <columns>
                 <TableColumn fx:id="idCol" text="ID" prefWidth="50"/>
                 <TableColumn fx:id="studentIdCol" text="Student ID" prefWidth="100"/>
@@ -40,22 +46,20 @@
             </columns>
         </TableView>
 
-        <!-- Attendance Report Section -->
         <Separator />
-        <Label text="Attendance Report" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
 
-        <GridPane hgap="10" vgap="10">
+        <Label text="Attendance Report" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-padding: 10 0 5 0;" />
+
+        <GridPane hgap="15" vgap="12">
             <Label text="Schedule ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="reportScheduleIdField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-            <Button text="Show Report" onAction="#showAttendanceReport" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <TextField fx:id="reportScheduleIdField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="180"/>
+            <Button text="Show Report" onAction="#showAttendanceReport" GridPane.rowIndex="0" GridPane.columnIndex="2"
+                    style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;"/>
         </GridPane>
 
-        <HBox spacing="20">
-            <padding>
-                <Insets top="10" right="10" bottom="10" left="10"/>
-            </padding>
-            <Label fx:id="presentCountLabel" text="Present: 0"/>
-            <Label fx:id="absentCountLabel" text="Absent: 0"/>
+        <HBox spacing="30" style="-fx-padding: 10 0 0 0;">
+            <Label fx:id="presentCountLabel" text="Present: 0" style="-fx-font-weight: bold;"/>
+            <Label fx:id="absentCountLabel" text="Absent: 0" style="-fx-font-weight: bold;"/>
         </HBox>
     </VBox>
 </AnchorPane>
