@@ -4,7 +4,7 @@ GitHub repository link
 https://github.com/SachiraJayadewa/SAMS
 
 
-Some improvements were made after the deadline
+Some improvements were made in the mysql script after the deadline. Use the following updated mysql script
 
 MySQL Script
 -- Create Database
