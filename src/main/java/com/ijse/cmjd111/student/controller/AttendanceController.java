@@ -7,6 +7,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -109,4 +115,20 @@ public class AttendanceController {
             showAlert("Schedule ID must be a number.");
         }
     }
+
+    @FXML
+    private void handleBackButton() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ijse/cmjd111/student/lecturerdashboard.fxml"));
+            Parent root = loader.load();
+            // Get the current stage from any node in the scene graph
+            Stage stage = (Stage) studentIdField.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Lecturer Dashboard");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Failed to load Lecturer Dashboard.");
+        }
+    }
+
 }

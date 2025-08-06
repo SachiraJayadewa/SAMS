@@ -4,8 +4,10 @@ import com.ijse.cmjd111.student.dto.StudentDTO;
 import com.ijse.cmjd111.student.model.Student;
 import com.ijse.cmjd111.student.service.StudentService;
 import com.ijse.cmjd111.student.service.StudentServiceImpl;
+import com.ijse.cmjd111.student.util.SceneNavigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -188,4 +190,10 @@ public class StudentController {
         courseField.clear();
         contactField.clear();
     }
+
+    @FXML
+    private void goBackToDashboard(javafx.event.ActionEvent event) {
+        SceneNavigator.switchScene("/com/ijse/cmjd111/student/admin.fxml", event,"Admin Dashboard");
+    }
+
 }

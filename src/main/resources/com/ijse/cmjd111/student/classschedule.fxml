@@ -4,30 +4,44 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.ijse.cmjd111.student.controller.ClassScheduleController" spacing="10">
-    <padding>
-        <Insets top="10" right="10" bottom="10" left="10"/>
-    </padding>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      fx:controller="com.ijse.cmjd111.student.controller.ClassScheduleController"
+      spacing="15"
+      style="-fx-padding: 20; -fx-background-color: #f9f9f9;">
 
-    <HBox spacing="10">
-        <Label text="Subject:"/>
+    <Label text="📅 Class Schedule Management"
+           style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-padding: 0 0 10 0;"/>
+
+    <HBox spacing="12">
+        <Label text="Subject:" style="-fx-font-size: 14px;"/>
         <TextField fx:id="subjectField" prefWidth="150"/>
-        <Label text="Course ID:"/>
+
+        <Label text="Course ID:" style="-fx-font-size: 14px;"/>
         <TextField fx:id="courseIdField" prefWidth="70"/>
-        <Label text="Lecturer ID:"/>
+
+        <Label text="Lecturer ID:" style="-fx-font-size: 14px;"/>
         <TextField fx:id="lecturerIdField" prefWidth="70"/>
-        <Label text="Date:"/>
+
+        <Label text="Date:" style="-fx-font-size: 14px;"/>
         <DatePicker fx:id="datePicker"/>
     </HBox>
 
-    <HBox spacing="10">
-        <Button text="Add" onAction="#addSchedule"/>
-        <Button text="Update" onAction="#updateSchedule"/>
-        <Button text="Delete" onAction="#deleteSchedule"/>
-        <Button text="Clear" onAction="#clearFields"/>
+    <HBox spacing="12">
+        <Button text="Add" onAction="#addSchedule"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-pref-width: 80; -fx-font-weight: bold;"/>
+        <Button text="Update" onAction="#updateSchedule"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-pref-width: 80; -fx-font-weight: bold;"/>
+        <Button text="Delete" onAction="#deleteSchedule"
+                style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-pref-width: 80; -fx-font-weight: bold;"/>
+        <Button text="Clear" onAction="#clearFields"
+                style="-fx-background-color: #9E9E9E; -fx-text-fill: white; -fx-pref-width: 80; -fx-font-weight: bold;"/>
+        <Button text="Go Back" onAction="#goBack"
+                style="-fx-background-color: #607D8B; -fx-text-fill: white; -fx-pref-width: 100; -fx-font-weight: bold;"/>
     </HBox>
 
-    <TableView fx:id="scheduleTable" prefHeight="300">
+    <TableView fx:id="scheduleTable" prefHeight="300"
+               style="-fx-background-color: white; -fx-border-color: #ccc;">
         <columns>
             <TableColumn fx:id="subjectCol" text="Subject" prefWidth="150"/>
             <TableColumn fx:id="courseIdCol" text="Course ID" prefWidth="80"/>
@@ -35,7 +49,9 @@
             <TableColumn fx:id="dateCol" text="Date" prefWidth="100"/>
         </columns>
     </TableView>
+
 </VBox>
+
 
 
 

@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1"
+<VBox alignment="CENTER" spacing="20" prefHeight="400" prefWidth="420"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.ijse.cmjd111.student.controller.AdminController"
-      alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+      style="-fx-padding: 30; -fx-background-color: #f4f4f4;">
 
-    <Label text="Admin Dashboard" style="-fx-font-size: 24px;" />
+    <Label text="🛠 Admin Dashboard"
+           style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-padding: 0 0 20 0;"/>
 
-    <Button text="Manage Courses" onAction="#handleManageCourses"/>
-    <Button text="Manage Lecturers" onAction="#handleManageLecturers"/>
-    <Button text="Manage Students" onAction="#handleManageStudents"/>
-
+    <Button text="📚 Manage Courses" onAction="#handleManageCourses"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-pref-width: 250;"/>
+    <Button text="👨‍🏫 Manage Lecturers" onAction="#handleManageLecturers"
+            style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-pref-width: 250;"/>
+    <Button text="👩‍🎓 Manage Students" onAction="#handleManageStudents"
+            style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-pref-width: 250;"/>
+    <Button text="📆 Manage Classes" onAction="#handleManageClasses"
+            style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-pref-width: 250;"/>
+    <Button text="🚪 Logout" onAction="#handleLogout"
+            style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; -fx-pref-width: 250;"/>
 </VBox>
+

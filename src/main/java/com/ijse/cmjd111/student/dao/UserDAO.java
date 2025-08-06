@@ -8,12 +8,14 @@ import java.sql.*;
 public class UserDAO {
 
     public User validateUser(String username, String password) {
-        String sql = "SELECT * FROM User WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, username);
             stmt.setString(2, password);
+
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
@@ -22,6 +24,18 @@ public class UserDAO {
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setRole(rs.getString("role"));
+
+                // ✅ These may be null
+                Object studentObj = rs.getObject("student_id");
+                if (studentObj != null) {
+                    user.setStudentId((Integer) studentObj);
+                }
+
+                Object lecturerObj = rs.getObject("lecturer_id");
+                if (lecturerObj != null) {
+                    user.setLecturerId((Integer) lecturerObj);
+                }
+
                 return user;
             }
 
@@ -32,4 +46,5 @@ public class UserDAO {
         return null; // invalid login
     }
 }
+
 

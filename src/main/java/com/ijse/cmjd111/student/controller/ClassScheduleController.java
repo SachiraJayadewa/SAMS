@@ -3,10 +3,13 @@ package com.ijse.cmjd111.student.controller;
 import com.ijse.cmjd111.student.model.ClassSchedule;
 import com.ijse.cmjd111.student.service.ClassScheduleService;
 import com.ijse.cmjd111.student.service.ClassScheduleServiceImpl;
+import com.ijse.cmjd111.student.util.SceneNavigator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -132,6 +135,11 @@ public class ClassScheduleController {
         alert.setTitle("Input Error");
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void goBack(ActionEvent event) {
+        SceneNavigator.switchScene("/com/ijse/cmjd111/student/admin.fxml", event, "Admin Dashboard");
+
     }
 }
 
